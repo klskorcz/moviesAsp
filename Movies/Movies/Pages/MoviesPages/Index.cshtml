@@ -1,0 +1,70 @@
+﻿@page
+@model IndexModel
+@{
+}
+<div class="w3-purple">
+<h2 class="w3-center">Best...Movies...Ever</h2>
+</div>
+
+<div>
+    <a asp-page="Create">Add Your Favorite Movie</a>
+</div>
+
+@if(Model.afterAddMessage != null)
+{
+    <div>
+        @Model.afterAddMessage
+    </div>
+}
+
+<div>
+    @if(Model.myConnections.Count()>0)
+    {
+        <form method="post">
+        <div>
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(m => m.myConnections.FirstOrDefault().MovieName) |
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.myConnections.FirstOrDefault().MovieYear) |
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.myConnections.FirstOrDefault().MovieGenre) |
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.myConnections.FirstOrDefault().MovieDirector) |
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach(var item in Model.myConnections)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.MovieName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.MovieYear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.MovieGenre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.MovieDirector)
+                    </td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@item.ID" class="w3-text-teal">Edit</a>
+                        <button asp-page-handler="Delete" asp-route-id="@item.ID">&times;</button>
+                    </td>
+                </tr>
+
+                }
+            </table>
+        </div>
+        </form>
+    }else
+    {
+        <p>No connections currently</p>
+    }
+</div>

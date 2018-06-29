@@ -1,0 +1,27 @@
+﻿@page
+@model CreateModel
+@{
+}
+<div>
+    <h2>Add Movie Entry</h2>
+</div>
+
+<div>
+    <form method="post">
+        <input asp-for="Entry.MovieName" type="text" placeholder="Movie Name" />
+        <span asp-validation-for="Entry.MovieName"></span>
+
+        <input asp-for="Entry.MovieYear" type="text" placeholder="Movie Year" />
+        <span asp-validation-for="Entry.MovieYear"></span>
+
+        <input asp-for="Entry.MovieGenre" type="text" placeholder="Movie Genre" />
+        <span asp-validation-for="Entry.MovieGenre"></span>
+
+        <input asp-for="Entry.MovieDirector" type="text" placeholder="Movie Director" />
+        <span asp-validation-for="Entry.MovieDirector"></span>
+
+        <input type="submit" value="Add Entry" />
+
+        <a asp-page="Index">Back to Movie List</a>
+    </form>
+</div>
